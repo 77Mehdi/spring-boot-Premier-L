@@ -1,10 +1,13 @@
 package com.pl.premier_zone.player;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "player_statistic")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Player {
 
     @Id

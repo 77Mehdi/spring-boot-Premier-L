@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
-@RequestMapping(path = "api/player")
+@RequestMapping(path = "/api/player")
 public class PlayerController {
 
     private final PlayerService playerService;
@@ -26,6 +27,8 @@ public class PlayerController {
             @RequestParam(required = false) String name,
             @RequestParam(required = false) String position,
             @RequestParam(required = false) String nation){
+
+       
         if( team != null && position != null){
             return  playerService.getPlayersByTeamAndPosition(team, position);
         }else if(team!=null){
@@ -39,6 +42,8 @@ public class PlayerController {
         }else {
             return playerService.getPlayers();
         }
+
+       
     }
 
     @PostMapping

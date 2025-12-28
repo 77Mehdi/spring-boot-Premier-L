@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Premier League inspired color palette */
+    --background: 270 100% 3%;
+    --foreground: 0 0% 98%;
+
+    --card: 270 60% 8%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 270 60% 8%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 290 100% 12%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 270 40% 15%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 270 30% 20%;
+    --muted-foreground: 270 10% 60%;
+
+    --accent: 158 100% 50%;
+    --accent-foreground: 270 100% 5%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 270 30% 20%;
+    --input: 270 30% 15%;
+    --ring: 158 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom Premier League colors */
+    --pl-purple: 290 100% 12%;
+    --pl-purple-light: 290 80% 25%;
+    --pl-cyan: 158 100% 50%;
+    --pl-magenta: 320 100% 50%;
+    --pl-gold: 45 100% 50%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(290 100% 12%) 0%, hsl(270 100% 5%) 50%, hsl(320 100% 15%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(270 60% 10%) 0%, hsl(270 60% 6%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(158 100% 50%) 0%, hsl(180 100% 40%) 100%);
+    --gradient-glow: radial-gradient(ellipse at center, hsl(158 100% 50% / 0.15) 0%, transparent 70%);
+
+    /* Shadows */
+    --shadow-glow: 0 0 60px hsl(158 100% 50% / 0.3);
+    --shadow-card: 0 8px 32px hsl(0 0% 0% / 0.4);
+    --shadow-hover: 0 16px 48px hsl(0 0% 0% / 0.5);
+
+    /* Sidebar */
+    --sidebar-background: 270 60% 5%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 158 100% 50%;
+    --sidebar-primary-foreground: 270 100% 5%;
+    --sidebar-accent: 270 40% 15%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 270 30% 20%;
+    --sidebar-ring: 158 100% 50%;
+  }
+
+  .dark {
+    --background: 270 100% 3%;
+    --foreground: 0 0% 98%;
+    --card: 270 60% 8%;
+    --card-foreground: 0 0% 98%;
+    --popover: 270 60% 8%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 290 100% 12%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 270 40% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 270 30% 20%;
+    --muted-foreground: 270 10% 60%;
+    --accent: 158 100% 50%;
+    --accent-foreground: 270 100% 5%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 270 30% 20%;
+    --input: 270 30% 15%;
+    --ring: 158 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Montserrat', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', system-ui, sans-serif;
+    font-weight: 700;
+  }
+}
+
+@layer components {
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+
+  .gradient-accent {
+    background: var(--gradient-accent);
+  }
+
+  .glow-accent {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .card-shadow {
+    box-shadow: var(--shadow-card);
+  }
+
+  .card-hover-shadow {
+    box-shadow: var(--shadow-hover);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(180 100% 60%) 100%);
+  }
+
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent;
+    background: linear-gradient(135deg, hsl(45 100% 50%) 0%, hsl(35 100% 60%) 100%);
+  }
+
+  /* Animated background pattern */
+  .pattern-dots {
+    background-image: radial-gradient(hsl(var(--accent) / 0.1) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* Glowing border effect */
+  .border-glow {
+    position: relative;
+  }
+
+  .border-glow::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(135deg, hsl(var(--accent)), hsl(320 100% 50%), hsl(var(--accent)));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .border-glow:hover::before {
+    opacity: 1;
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.5s ease-out;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(158 100% 50% / 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px hsl(158 100% 50% / 0.5);
+    }
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
