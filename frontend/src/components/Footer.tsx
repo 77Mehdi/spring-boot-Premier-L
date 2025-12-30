@@ -56,7 +56,7 @@ const Footer = () => {
             <h4 className="font-semibold text-foreground mb-4">Connect</h4>
             <div className="flex gap-3">
               <a
-                href="#"
+                href="https://github.com/77Mehdi"
                 className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors"
                 aria-label="GitHub"
               >

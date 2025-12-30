@@ -5,8 +5,6 @@
 
 import axios from 'axios';
 
-// API base URL - configure this based on your environment
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080/api/player'; 
 
 // Create axios instance with default configuration
 const apiClient = axios.create({
@@ -73,6 +71,7 @@ export const searchPlayers = async (params: PlayerSearchParams): Promise<Player[
 
   // ⚡ Instead of apiClient.get(''), do:
   return (await apiClient.get(url)).data;
+  //return [] ;
 };
 
 
