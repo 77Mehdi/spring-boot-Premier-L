@@ -93,7 +93,8 @@ export const addPlayer = async (player: Omit<Player, 'id'>): Promise<Player> => 
  * @returns Promise with updated player
  */
 export const updatePlayer = async (player: Player): Promise<Player> => {
-  const response = await apiClient.put('/player', player);
+  if (!player.id) throw new Error('Player ID is required to update');
+  const response = await apiClient.put(`/api/player/${player.id}`, player);
   return response.data;
 };
 
